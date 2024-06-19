@@ -13,6 +13,13 @@ func main() {
 	// Call DB
 	models.ConnectDatabase()
 
+	// Router
+	router.GET("/", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "Hello World!",
+		})
+	})
+
 	// All post routes
 	router.GET("/api/product", controllers.GetPosts)
 	router.POST("/api/product", controllers.StorePost)
