@@ -4,12 +4,10 @@ import (
 	"product/controllers"
 	"product/models"
 
-	"net/http"
-
 	"github.com/gin-gonic/gin"
 )
 
-func Handler(w http.ResponseWriter, r *http.Request) {
+func main() {
 	router := gin.Default()
 
 	// Call DB
@@ -29,5 +27,5 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	router.PUT("/api/product/:id", controllers.UpdatePost)
 	router.DELETE("/api/product/:id", controllers.DeletePost)
 
-	router.ServeHTTP(w, r)
+	router.Run(":3000")
 }
